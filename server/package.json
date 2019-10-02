@@ -16,9 +16,10 @@
       "graphql": "^14.5.8",
       "pg": "^7.3.0",
       "reflect-metadata": "^0.1.10",
+      "type-graphql": "^0.17.5",
       "typeorm": "0.2.19"
    },
    "scripts": {
-      "start": "ts-node src/index.ts"
+      "start": "nodemon src/index.ts"
    }
 }
