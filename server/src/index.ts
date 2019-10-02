@@ -5,6 +5,7 @@ import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from "type-graphql";
 import { UserResolver } from "./UserResolver";
+import { createConnection } from "typeorm";
 
 const bootstrap = async () => {
   const app = express();
@@ -13,10 +14,13 @@ const bootstrap = async () => {
     res.send('hello');
   });
 
+  await createConnection();
+
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers: [UserResolver]
-    })
+    }),
+    context: ({ req, res }) => ({ req, res})
   });
 
   apolloServer.applyMiddleware({ app });
