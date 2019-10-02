@@ -62,7 +62,7 @@ export class UserResolver {
         throw new Error("Bad password");
       } else { 
         res.cookie('jid', sign({ userId: user.id }, 'different_secret', {
-          expiresIn: '7d'
+          expiresIn: '2d'
         }), {
           httpOnly: true
         });
